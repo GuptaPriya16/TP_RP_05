@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 120vh;
+            margin:0;
+
+        }
+        .container {
+            background-color: darkmagenta;
+            color: coral;
+            padding:30px;
+            border-radius: 8px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
+            width: 200px;
+            text-align: center;
+        }
+        h1{
+            margin-bottom: 30px;
+        }
+        input {
+            padding: 12px;
+            border: none;
+            background-color:cadetblue;
+            color: azure;
+            border-radius: 5px;
+            cursor:pointer;
+        }
+        button:hover {
+            background-color: aqua;
+        }
+        ol {
+            padding-left: 0;
+            margin-top: 20px;
+        }
+
+        li{
+            list-style: none;
+            background-color: deepskyblue;
+            color: aquamarine;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        } 
+        .complete-button {
+            background-color: chocolate;
+            color: aliceblue;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .complete-button:hover {
+            background-color: burlywood;
+        }
+    </style>
+    </head>
+<body>
+    <div class="container">
+        <h1>TODO</h1>
+        <div>
+            <input id="task">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+        <div>
+            <ol id="taskList"></ol>
+        </div>
+    </div>
+    <script>
+        var count = 0;
+        function addTask() {
+            //var myid="list"+count++
+            //var task1 = document.getElementById("task");
+            //var task = document.getElementById('taskList');
+            //task.innerHTML += `<li id="${myid}">${task1.value}</li><button onclick="addTask()">Complete</button>`
+                // count += 1;
+                var myid = "list" + count++;
+            var task1 = document.getElementById("task").value;
+            var taskList = document.getElementById('taskList');
+            var li = document.createElement("li");
+            li.id = myid;
+            var taskText = document.createElement("span");
+            taskText.className = "task-text"; // Add a class to identify the task text
+            taskText.textContent = task1;
+            li.appendChild(taskText);
+            var completeButton = document.createElement("button");
+            completeButton.className = "complete-button";
+            completeButton.textContent = "Complete";
+            completeButton.onclick = function() {
+                complete(myid);
+            };
+            li.appendChild(completeButton);
+            taskList.appendChild(li);
+            document.getElementById("task").value = "";
+
+            //li.innerHTML =task1 + `<li id="${myid}">${task1.value}</li><button onclick="complete(\'' + myid + '\')">Complete</button>`;
+            //li.innerHTML = task1 + '<button class="complete-button" onclick="complete(\'' + myid + '\')">Complete</button>';
+            //taskList.appendChild(li);
+            //document.getElementById("task").value = "";
+        }      
+                function complete(myid){
+                    var task = document.getElementById(myid);
+                    var taskText = task.querySelector(".task-text");
+                     let list1 = document.getElementById(myid);
+                   taskText.style.textDecoration="line-through"
+                   taskText.style.backgroundColor="red"
+                   //task.querySelector(".complete-button").remove();
+                   
+
+                    console.log("complete task called");
+                }
+        
+
+    </script>
+    </body>
+</html>
