@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+<body>
+    <script>
+        //Addition
+           function add(value1,value2){
+            console.log(value1+value2);
+           }
+           add(50,60)
+        //Substraction
+            function sub(value1,value2){
+                console.log(value1-value2);
+            }
+            sub(70,50)
+        //Multiplication
+            function multiply(value1,value2){
+                console.log(value1*value2);
+            }
+            multiply(8,9)
+        //Division
+            function div(value1,value2){
+                console.log(value1/value2);
+            }
+            div(30,9)
+        //Modulus
+            function mod(value1,value2){
+                console.log(value1%value2);
+            }
+            mod(24,35)
+
+        //Area of triangle
+            function calculatetriangleArea(base,height){
+                const area = base*height;
+                return area;
+            }
+            const triangleBase = 25;
+            const triangleHeight = 4;
+            const areaOfTriangle = CalculateTriangleArea(triangleBase,triangleHeight);
+            console.log(`The area of the triangle with base${triangleBase} and height ${triangleHeight} is ${areaOfTriangle}.`);
+</script>
+</body>
+</html>

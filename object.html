@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var dostiMovie = {
+            title:"Dosti",
+            rating:4,
+            during:3,
+            durationType:"Hours",
+            casts:["Shreya","Rocky"],
+            genre:["Emotional","Comedy"],
+            trending:true,
+        };
+        Object.freeze(dostiMovie)
+        //Access Object
+           console.log(dostiMovie.casts)
+           console.log(dostiMovie.genre)
+           console.log(dostiMovie['rating']);
+        //Manupulate Object
+           dostiMovie.rating = 4.5;
+           console.log(dostiMovie.rating);
+        //Delete
+           delete dostiMovie.trending;
+           console.log(dostiMovie)   
+           
+
+           var productDetail = {
+            name:"",
+            rating:0,
+            price:0,
+            img:"",
+            discount:0
+           }
+        //Array of Object
+           var products = [productDetail]
+        
+        //Example
+           var studentTechpaathshala = {
+               name:"Priya",
+               Mobile_no:7898654567,
+               add:"Thane",
+               class:"sycs",
+               course:"Javascript"
+           };
+           console.log(studentTechpaathshala)
+           console.log(studentTechpaathshala.name)
+           console.log(studentTechpaathshala.add)
+           console.log(studentTechpaathshala.class)
+           console.log(studentTechpaathshala.course)
+    </script>
+</body>
+</html>
