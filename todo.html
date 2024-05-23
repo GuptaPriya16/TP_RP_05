@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: linear-gradient(135deg, darkmagenta, purple);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 300px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+            font-size: 2em;
+            letter-spacing: 2px;
+        }
+        input {
+            padding: 15px;
+            border: none;
+            background-color: #eee;
+            color: #333;
+            border-radius: 25px;
+            width: 80%;
+            margin-bottom: 20px;
+            outline: none;
+            font-size: 1em;
+        }
+        input::placeholder {
+            color: #888;
+        }
+        button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            background-color: coral;
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: rgba(255, 127, 80, 0.8);
+        }
+        ol {
+            padding-left: 0;
+            margin-top: 20px;
+        }
+        li {
+            list-style: none;
+            background-color: deepskyblue;
+            color: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+        li:hover {
+            transform: scale(1.02);
+        }
+        .complete-button, .delete-button {
+            background-color: darkorange;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 8px 12px;
+            cursor: pointer;
+            margin-left: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .complete-button:hover {
+            background-color: orange;
+        }
+        .delete-button:hover {
+            background-color: red;
+        }
+        .task-text {
+            flex-grow: 1;
+            margin-right: 10px;
+        }
+        .task-complete {
+            text-decoration: line-through;
+            background-color: red;
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+    </style>
+    </head>
+<body>
+    <div class="container">
+        <h1>TODO</h1>
+        <div>
+            <input id="task">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+        <div>
+            <ol id="taskList"></ol>
+        </div>
+    </div>
+    <script>
+        var count = 0;
+        function addTask() {
+            var myid = "list" + count++;
+            var task1 = document.getElementById("task").value;
+            var taskList = document.getElementById('taskList');
+            var li = document.createElement("li");
+            li.id = myid;
+            var taskText = document.createElement("span");
+            taskText.className = "task-text"; // Add a class to identify the task text
+            taskText.textContent = task1;
+            li.appendChild(taskText);
+
+            var completeButton = document.createElement("button");
+            completeButton.className = "complete-button";
+            completeButton.textContent = "Complete";
+            completeButton.onclick = function() {
+                complete(myid);
+            };
+            li.appendChild(completeButton);
+
+            var deleteButton = document.createElement("button");
+            deleteButton.className = "delete-button";
+            deleteButton.textContent = "Delete";
+            deleteButton.onclick = function() {
+                deleteTask(myid);
+            };
+            li.appendChild(deleteButton);
+
+            taskList.appendChild(li);
+            document.getElementById("task").value = "";
+        }
+
+        function complete(myid) {
+            var task = document.getElementById(myid);
+            var taskText = task.querySelector(".task-text");
+            taskText.style.textDecoration = "line-through";
+            taskText.style.backgroundColor = "red";
+            console.log("complete task called");
+        }
+
+        function deleteTask(myid) {
+            var task = document.getElementById(myid);
+            task.remove();
+            console.log("delete task called");
+        }
+    </script>
+</body>
+</html>
